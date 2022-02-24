@@ -5,6 +5,7 @@ void main() {
 
   executeFunc(myFunc, 'JP', 62);
 }
+
 void executeFunc(String Function(String, int) passedFunc, String theName, int theAge) {
   print(passedFunc(theName, theAge));
 }
