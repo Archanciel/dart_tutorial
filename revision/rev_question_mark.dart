@@ -1,5 +1,5 @@
 void main() {
-  // what is ??
+  // using ?? null operator
   int? nullInt;
 
   final int res = 5 * (nullInt ?? 1);
@@ -30,7 +30,7 @@ void main() {
                                 // a ! assertion operator is used.
   int twoTwo = intMap['two']!;
 
-  // what is ??=
+  // using ??= default value operator or null aware operator
   int i = nullInt ??= 0;
   print('i $i'); // i 0
   // what is ?.
