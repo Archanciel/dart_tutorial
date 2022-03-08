@@ -1,50 +1,52 @@
 void main() {
   /*
   SUMMARY:
-    - using ?? null operator
-    - using ??= default value operator or null aware operator
+    - using ?? null operator. Does not update null value of source operand
+    - using ??= default value operator or null aware operator. Does update null 
+      value of source operand 
     - what is ?.
     - what is …?
   */
 
-  // using ?? null operator
   int? nullInt;
 
   final int res = 5 * (nullInt ?? 1);
   print('res $res'); // res 5
+  print('nullInt $nullInt'); // nullInt null
 
   List<int> intLst = [
     3,
     nullInt ?? 0,
   ];
   print('intLst $intLst'); // intLst [3, 0]
+  print('nullInt $nullInt'); // nullInt null
 
   List<int?> nullIntLst = [
     3,
-    nullInt,
+    nullInt ??= 10,
   ];
   print('nullIntLst $nullIntLst'); // nullIntLst [3, null]
+  print('nullInt $nullInt'); // nullInt 10
 
   Iterable<int> tenIntIterator = nullIntLst.map((int? x) => 10 * (x ?? 0));
   print('tenIntIterator $tenIntIterator'); // tenIntIterator (30, 0)
 
-  Map<String, int> intMap = {'one': nullInt ?? 0, 'two': 2};
-  print('intMap $intMap'); // intMap {one: 0}
+  double? nulldouble;
+  Map<String, double> doubleMap = {'one': nulldouble ?? 0, 'two': 2};
+  print('doubleMap $doubleMap'); // doubleMap {one: 0.0, two: 2.0}
+  print('nullDouble $nulldouble');
 
-  int two =
-      intMap['two'] ?? 2; /*  The index [] operator on the Map class returns
-                              null if the key isn’t present. This implies
-                              that the return type of that operator must be
-                              nullable or that a ?? default operator or
-                              a ! assertion operator is used.
-                           */
-  int twoTwo = intMap['two']!;
-  print('twoTwo ${twoTwo * 10}'); // twoTwo 20
+  double doubleThree = doubleMap['three'] ?? 3; /* The index [] operator on the  
+                              Map classreturns null if the key isn’t present.  
+                              This implies that the return type of that operator  
+                              must be nullable or that a ?? default operator or
+                              a ! assertion operator is used. */
 
-  // using ??= default value operator or null aware operator
-  int i = nullInt ??= 0;
-  print('i $i'); // i 0
+  print('three $doubleThree'); // three 3
+  print("intMap['three'] ${doubleMap['three']}"); // doubleMap['three'] null
+  doubleThree = doubleMap['three'] ??= 3;
+  print("intMap['three'] ${doubleMap['three']}"); // doubleMap['three'] 3
 
   // what is ?.
-  // what is …?    
+  // what is …?
 }
