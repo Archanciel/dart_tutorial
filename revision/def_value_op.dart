@@ -5,13 +5,13 @@ void main() {
 
   double? dn;
   print(dn?.round()); // null
-  double e = dn ??= 100.500001;
-  print(dn); // 100.500001
+  double e = dn ?? 100.500001;
+  print(dn); // null
   print(e); // 100.500001
 
   Map<String, double> mp = {'one': 1.0, 'two': 2.0};              
-  double f = mp['boo'] ??= 4.0;
-  print(mp['boo']); // 4
+  double f = mp['boo'] ?? 4.0;
+  print(mp['boo']); // null
   print(f); // 4
 
   double? dnn;
