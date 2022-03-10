@@ -3,5 +3,5 @@ void main() {
 
   String nonNullStr = nullPossibleStr ??= 'NON Null';
 
-  print(nonNullStr.toLowerCase());
+  print(nonNullStr.toLowerCase()); // non null
 }

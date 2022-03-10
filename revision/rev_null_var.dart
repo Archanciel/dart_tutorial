@@ -1,5 +1,5 @@
 void main() {
   String? nullPossibleStr;
 
-  print('${nullPossibleStr?.toUpperCase()}');
+  print('${nullPossibleStr?.toUpperCase()}'); // null
 }
