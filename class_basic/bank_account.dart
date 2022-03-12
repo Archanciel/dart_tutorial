@@ -1,6 +1,6 @@
-class BankAccount {
-  BankAccount({required this.holder, this.balance = 0});
-  final String holder;
+class BankAccountNamedArguments {
+  BankAccountNamedArguments({required this.holder, this.balance = 0});
+  final String holder; // immutable !
   double balance = 0;
 
   void deposit(double amount) {
@@ -17,12 +17,24 @@ class BankAccount {
   }
 }
 
+class BankAccountPositionalArguments {
+  BankAccountPositionalArguments(this.holder, [this.balance = 0]);
+  final String holder; // immutable !
+  double balance = 0;
+}
+
 void main() {
-  final bankAccount = BankAccount(holder: 'JPS');
+  final bankAccountNamedArg = BankAccountNamedArguments(holder: 'JPS');
 
-  bankAccount.deposit(500);
-  bankAccount.withdraw(200);
-  bankAccount.withdraw(1000);
+  bankAccountNamedArg.deposit(500);
+  bankAccountNamedArg.withdraw(200);
+  bankAccountNamedArg.withdraw(1000);
 
-  print(bankAccount.balance);
+  print(bankAccountNamedArg.balance); // 300.0
+
+  final bankAccountPositionalArgInitBal = BankAccountPositionalArguments('JPS', 500);
+  final bankAccountPositionalArgNullBal = BankAccountPositionalArguments('JPS');
+
+  print(bankAccountPositionalArgInitBal.balance); // 500.0
+  print(bankAccountPositionalArgNullBal.balance); // 0.0
 }
