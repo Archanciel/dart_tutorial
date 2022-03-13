@@ -18,8 +18,20 @@ class Temperature {
   Temperature.celsius(this.celsius);
   Temperature.fahrenheit(double fahrenheit) : celsius = (fahrenheit - 32) / 1.8;
 
+/*
   double get fahrenheit => (celsius * 1.8) + 32;
-  set fahrenheit(double fahrenheit) => celsius = (fahrenheit - 32) / 1.8;
+  set fahrenheit(double tempFahrenheit) => celsius = (tempFahrenheit - 32) / 1.8;
+*/
+
+  double get fahrenheit {
+    print('fahrenheit getter called');
+    return (celsius * 1.8) + 32;
+  }
+
+  set fahrenheit(double tempFahrenheit) {
+    print('fahrenheit setter called');
+    celsius = (tempFahrenheit - 32) / 1.8;
+  }
 
   String description() {
     return 'celsius: $celsius = fahrenheit $fahrenheit';
@@ -36,13 +48,23 @@ void main() {
   Temperature tc = Temperature.celsius(20);
   Temperature tf = Temperature.fahrenheit(68);
 
+  print('\ntc.description');
   print(tc.description());
+
+  print('\ntf.description');
   print(tf.description());
-  print(tc.celsius);
-  print(tc.fahrenheit);
+
+  print('\ntc.celsius');
+  print('tc.celsius ${tc.celsius}');
+
+  print('\ntc.fahrenheit');
+  print('tc.fahrenheit ${tc.fahrenheit}');
 
   Temperature tc_2 = Temperature.celsius(20);
   print(tc_2.celsius);
+
+  print('\ntc_2.fahrenheit = 100');
   tc_2.fahrenheit = 100;
   print(tc_2.celsius);
 }
+
