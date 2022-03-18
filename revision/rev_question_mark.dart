@@ -57,7 +57,8 @@ void main() {
   print('doubleMap $doubleMap'); // doubleMap {one: 1.0, two: 2.0}
   print('nullDouble $nullDouble'); // nullDouble null
 
-  double doubleThree = doubleMap['three'] ?? 3; /* The index [] operator on the  
+  double doubleThree = doubleMap['three'] ??
+      3; /* The index [] operator on the  
                               Map classreturns null if the key isn’t present.  
                               This implies that the return type of that operator  
                               must be nullable or that a ?? default operator or
@@ -69,20 +70,24 @@ void main() {
   print("doubleMap['three'] ${doubleMap['three']}"); // doubleMap['three'] 3
 
   // what is …? null-aware spread operator
-  
+
   List<int> intLstThree = [1, 2, 23, 4];
 
   List<int>? intLstTwoNull;
   print('intLstTwoNull $intLstTwoNull'); // intLstTwoNull null
+
+  List<int?> intLstFourNull = [50, null, null, 30];
+  print('intLstFourNull $intLstFourNull'); // intLstFourNull [50, null, null, 30]
 
   List<int> intLstFour = [
     10,
     20,
     230,
     40,
-    ...?intLstTwoNull, // ...intLstTwoNull causes compile error 'A nullable 
-                       // expression can't be used in a spread'
+    ...?intLstTwoNull, // ...intLstTwoNull causes compile error 'A nullable
+    //                    expression can't be used in a spread'
     ...intLstThree,
+    ...?intLstFourNull,
   ];
   print('intLstFour $intLstFour'); // intLstFour [10, 20, 230, 40, 1, 2, 23, 4]
 }
