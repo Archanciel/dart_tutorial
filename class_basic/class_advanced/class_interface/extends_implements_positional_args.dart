@@ -1,15 +1,13 @@
-abstract class A {
-  void m(int b);
+
+
+class A {
+  void m(int b) {}
 }
 
 class B {
   void m(int a) {}
 }
 
-class C extends B implements A {}
+class C extends A implements B {} // with positional args, this class def is ok
 
-class D extends A implements B {}
-
-class E extends B implements A {
-  void m(int a) {}
-}
+class CC extends B implements A {} // valid as well
