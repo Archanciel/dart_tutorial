@@ -48,6 +48,8 @@ class Product extends Equatable {
   double get price => _price;
   String get nameChoice => '(${productKey})${_name.substring(1)}';
   String get productKey => _name.substring(0, 1);
+  String get namePrice => '$nameChoice: \$ $price';
+  String get name => _name;
 
   static Product? prod(String prodKey) => Product.productMap[prodKey];
 }

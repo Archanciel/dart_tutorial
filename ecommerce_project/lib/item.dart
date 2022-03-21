@@ -11,7 +11,7 @@ class Item {
   double get total => _quantity * _product.price;
 
   String toString() =>
-      '$_quantity ${_product.nameChoice} ${total.toStringAsFixed(2)}';
+      '$_quantity x ${_product.name} \$${total.toStringAsFixed(2)}';
 }
 
 void main() {

@@ -15,4 +15,10 @@ class Cart {
 
     return total;
   }
+
+  String get items {
+    final String itemLst = _itemLst.map((e) => e.toString()).join('\n');
+
+    return '------------\n$itemLst\nTotal: \$${total.toStringAsFixed(2)}\n------------';
+  }
 }
