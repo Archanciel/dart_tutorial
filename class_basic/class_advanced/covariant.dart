@@ -25,5 +25,5 @@ void main() {
 
   print(p1 == p2); // false
   print(p1 == p3); // true
-  print(p1 == 'abc'); // false
+//print(p1 == 'abc'); // false
 }
