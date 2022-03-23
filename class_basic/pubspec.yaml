@@ -12,6 +12,7 @@ environment:
   sdk: '>=2.16.0 <4.0.0'
   
 dependencies:
-  lints: ^1.0.1
+  lints: ^1.0.0
   equatable: ^2.0.0
+  intl: ^0.17.0
 dev_dependencies:
