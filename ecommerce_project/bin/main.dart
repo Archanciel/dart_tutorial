@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:test/cart.dart';
-import 'package:test/product.dart';
-import 'package:test/item.dart';
+import 'package:ecommerce_project/cart.dart';
+import 'package:ecommerce_project/product.dart';
+import 'package:ecommerce_project/item.dart';
 
 void main() {
 //  tryProductItemCart();

@@ -1,4 +1,4 @@
-import 'package:test/item.dart';
+import 'item.dart';
 
 class Cart {
   final List<Item> _itemLst = [];

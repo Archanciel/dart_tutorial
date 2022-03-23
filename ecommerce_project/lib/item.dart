@@ -1,4 +1,4 @@
-import 'package:test/product.dart';
+import 'package:ecommerce_project/product.dart';
 
 class Item {
   final Product _product;

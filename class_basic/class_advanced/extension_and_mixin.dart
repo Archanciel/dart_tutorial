@@ -60,9 +60,15 @@ mixin MixinClassDateTime on MySubClass {
   */
   String todayDateTime() {
     final now = new DateTime.now();
-    String  ddmmyy = DateFormat('dd/MM/yy HH:mm:ss').format(now);
+    String ddmmyy = DateFormat('dd/MM/yy HH:mm:ss').format(now);
 
     return '$name $ddmmyy';
+  }
+}
+
+extension on MySubSubClass {
+  String describeUpperCase() {
+    return describe().toUpperCase();
   }
 }
 
@@ -75,9 +81,12 @@ void main() {
   print(msc.todayDateOnly()); // defined in MixinClassDateOnly which inherits
   //                             from Object and is added to MySubClass
 
-  MySubSubClass masc = MySubSubClass(name: 'Béa', surname: 'Bebel', salary: 3500.0);
+  MySubSubClass masc =
+      MySubSubClass(name: 'Béa', surname: 'Bebel', salary: 3500.0);
 
-  print('\n${masc.describe()}');
+  print('\n${masc.describeUpperCase()}'); // describeUpperCase() method
+  //                                         added to MySubSubClass using
+  //                                         extension, not mixin !
   print(masc.todayWeekday()); // defined in MixinClassWeekDayDate which inherits
   //                             from Object and is added to MyBaseClass
   print(masc.todayDateOnly()); // defined in MixinClassDateOnly which inherits
