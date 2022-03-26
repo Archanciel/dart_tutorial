@@ -70,6 +70,8 @@ extension on MySubSubClass {
   String describeUpperCase() {
     return describe().toUpperCase();
   }
+
+  double hourPerDay = 8;
 }
 
 void main() {

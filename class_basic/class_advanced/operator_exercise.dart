@@ -12,8 +12,7 @@ class Point {
   int get y => _y;
   set y(int y) => _y = y;
 
-  // covariant not required here since + operator not implemented in Object
-  // class
+  // covariant not required since + operator not implemented in Object class
   Point operator +(Point point) => Point(x: _x + point.x, y: _y + point.y);
 
   Point operator *(int val) => Point(x: _x * val, y: _y * val);
@@ -21,7 +20,6 @@ class Point {
   String desc() => 'x: $_x, y: $_y';
 
   @override
-  // TODO: implement hashCode
   int get hashCode => super.hashCode;
 }
 
