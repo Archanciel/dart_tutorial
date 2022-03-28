@@ -1,9 +1,7 @@
-Future<String> fetchUserOrder() {
-  return Future.delayed(Duration(seconds: 2), () {
-    throw UnsupportedError('out of coffee');
+Future<String> fetchUserOrder() => Future.delayed(Duration(seconds: 2), () {
+      throw UnsupportedError('out of coffee');
 //    return 'ristretto';
-  });
-}
+    });
 
 void main() {
   print('main: start');
