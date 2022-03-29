@@ -10,15 +10,19 @@ class EmailAddress {
       }
     }
   }
+
+  String get email => _email;
 }
 
 void main() {
   try {
-    EmailAddress m1 = EmailAddress('jp.schny@gmail.com');
-    EmailAddress m2 = EmailAddress('jp.schnygmail.com');
-    EmailAddress m3 = EmailAddress('');
+    EmailAddress('jp.schny@gmail.com');
+    EmailAddress('jp.schnygmail.com');
+    EmailAddress('');
   } on FormatException catch (e) {
-    print(e);
+    print(e); // FormatException: email 'jp.schnygmail.com' does not contain '@'
+    print('exception message: ${e.message}'); // exception message: email
+//                              'jp.schnygmail.com' does not contain '@'
   } catch (e) {
     print(e.toString());
   } finally {
