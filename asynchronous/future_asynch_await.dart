@@ -3,7 +3,8 @@ Future<String> fetchUserOrder() => Future.delayed(Duration(seconds: 2), () {
       return 'ristretto';
     });
 
-void main() async {
+// void main() async { // ok aswell !
+Future<void> main() async {
   print('main: start');
 
   final String order = await fetchUserOrder();
