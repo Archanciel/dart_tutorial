@@ -1,7 +1,7 @@
 Future<String> fetchUserOrder() {
   return Future.delayed(Duration(seconds: 2), () {
-//    throw UnsupportedError('out of coffee');
-    return 'ristreto';
+    throw UnsupportedError('out of coffee');
+//    return 'ristreto';
   });
 }
 
@@ -11,11 +11,11 @@ void main() {
   String mainStr = 'main string';
 
   fetchUserOrder()
-      .then((value) {
+      .then<void>((value) {
         mainStr = 'modified by fetchUserOrder() main string';
         print(value);
       })
-      .catchError((error) => print(error))
+      .catchError((error) => print('Problem: ${error.message}')) 
       .whenComplete(() => print('complete'));
   print('main: waiting ...');
   print('first main: $mainStr');

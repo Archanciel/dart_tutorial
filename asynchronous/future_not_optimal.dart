@@ -7,10 +7,13 @@ void main() {
   print('main: start');
 
   fetchUserOrder()
-      .then((value) {
+      .then<void>((value) { // adding <void> to then() method eliminates
+//                             the compiler warning displayed on catchError()
+//                             line "value of type 'void' can't be returned by
+//                             the 'onError' handler because it must be
+//                             assignable to 'FutureOr<Null>'
         print(value);
       })
-      // my question: https://stackoverflow.com/questions/71652743/how-can-a-value-of-type-void-can-t-be-returned-by-the-onerror-handler-o
-      .catchError((error) => print(error.message))
+      .catchError((error) => print('Problem: ${error.message}')) 
       .whenComplete(() => print('complete'));
 }
