@@ -1,10 +1,9 @@
 Future<String> fetchUserOrder() => Future.delayed(Duration(seconds: 2), () {
-      throw UnsupportedError('out of coffee');
-//      return 'ristretto';
+//      throw UnsupportedError('out of coffee');
+      return 'ristretto';
     });
 
-// void main() async { // ok aswell !
-Future<void> main() async {
+Future<void> main() async { // void main() async { ok aswell !
   print('main: start');
 
   final String order =
@@ -19,3 +18,4 @@ Future<void> main() async {
 
   print('complete');
 }
+
