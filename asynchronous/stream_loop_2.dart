@@ -11,14 +11,16 @@ Stream<int> getRandomValues(int streamLength) async* {
   }
 }
 
-void main() {
+void main() async {
   print('main start');
 
   Stream<int> streamInt = getRandomValues(10);
 
   print('stream created');
 
-  streamInt.listen((event) => print('$event seconds'));
-
+  await for (final value in streamInt) {
+    print(value);
+  }
+  
   print('nain end');
 }
