@@ -16,14 +16,16 @@ void main() async {
 
   print('stream created');
   print('executing Stream ...');
+
   int i = 0;
   DateTime now = DateTime.now();
+
   await for (final value in streamInt) {
     i = value;
   }
-  print(i);
   final int timeDiff = DateTime.now().difference(now).inMilliseconds;
-  print(timeDiff);
 
+  print(i);
+  print(timeDiff);
   print('nain end');
 }
