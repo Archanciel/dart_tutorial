@@ -1,14 +1,5 @@
 // posted as answer on https://stackoverflow.com/questions/57492517/difference-between-yield-and-yield-in-dart/71713251#71713251
 
-void main() {
-  Iterable<int> it = getRangeYieldAnalysed(1, 4);
-  print('main range obtained');
-
-  it.forEach((element) {
-    print('el $element');
-  });
-}
-
 Iterable<int> getRangeYield(int start, int end) sync* {
   if (start <= end) {
     yield start;
@@ -33,10 +24,20 @@ Iterable<int> getRangeYieldAnalysed(int start, int end) sync* {
 
 Iterable<int> getRangeYieldStar(int start, int end) sync* {
   // same output as getRangeYield()
-  if (start <= end) {
-    yield start;
+  if (start < end) {
     yield* getRangeYieldStar(start + 1, end);
   }
+  yield start;
+}
+
+Iterable<int> getRangeYieldStarAnalysed(int start, int end) sync* {
+  // same output as getRangeYield()
+  print('generator $start started');
+  if (start < end) {
+    yield* getRangeYieldStar(start + 1, end);
+  }
+  yield start;
+  print('generator $start ended');
 }
 
 Iterable<int> getRangeForLoop(int start, int end) sync* {
@@ -44,4 +45,13 @@ Iterable<int> getRangeForLoop(int start, int end) sync* {
   for (int i = start; i <= end; i++) {
     yield i;
   }
+}
+
+void main() {
+  Iterable<int> it = getRangeYieldStarAnalysed(1, 4);
+  print('main range obtained');
+
+  for(int element in it) {
+    print('el $element');
+  };
 }
