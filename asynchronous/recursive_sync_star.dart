@@ -34,7 +34,7 @@ Iterable<int> getRangeYieldStarAnalysed(int start, int end) sync* {
   // same output as getRangeYield()
   print('generator $start started');
   if (start < end) {
-    yield* getRangeYieldStar(start + 1, end);
+    yield* getRangeYieldStarAnalysed(start + 1, end);
   }
   yield start;
   print('generator $start ended');
