@@ -1,3 +1,4 @@
+import 'weather.dart';
 import 'weather_api_client.dart';
 
 void main(List<String> args) async {
@@ -7,11 +8,9 @@ void main(List<String> args) async {
     args = ['london']; // so that you can debug !
   }
 
-  WeatherApiClient client = WeatherApiClient();
-
   String city = args[0];
+  final WeatherApiClient client = WeatherApiClient();
+  int locationId = await client.getLocationId(city);
 
-  final int locationId = await client.getLocationId(city);
-
-  print(locationId);
+  Weather weather = await client.fetchWeather(locationId);
 }
