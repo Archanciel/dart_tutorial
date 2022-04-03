@@ -15,4 +15,5 @@ dependencies:
   lints: ^1.0.0
   equatable: ^2.0.0
   intl: ^0.17.0
+  http: ^0.13.4
 dev_dependencies:
