@@ -8,9 +8,6 @@ Future<void> main() async {
   print('main: start');
 
   final String order = await fetchUserOrder();
-  print('first order $order');
-
-  print(await fetchUserOrder());
-
-  print('complete');
+  print('order ready after 2 sec $order');
+  print('main end');
 }
