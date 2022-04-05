@@ -9,8 +9,8 @@ void main(List<String> args) async {
   }
 
   String city = args[0];
-  final WeatherApiClient client = WeatherApiClient();
-  int locationId = await client.getLocationId(city);
+  final WeatherApiClient weatherApi = WeatherApiClient();
 
-  Weather weather = await client.fetchWeather(locationId);
+  Weather weather = await weatherApi.getWeather(city);
+  
 }

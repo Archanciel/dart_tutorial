@@ -33,8 +33,14 @@ class WeatherApiClient {
     }
 
     final weatherJson = jsonDecode(response.body);
+    //print(response.body);
     final weather = Weather.fromJson(weatherJson);
 
     return weather;
+  }
+
+  Future<Weather> getWeather(String city) async {
+    final int locationId = await getLocationId(city);
+    return await fetchWeather(locationId);
   }
 }
