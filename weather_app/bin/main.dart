@@ -12,5 +12,5 @@ void main(List<String> args) async {
   final WeatherApiClient weatherApi = WeatherApiClient();
 
   Weather weather = await weatherApi.getWeather(city);
-  
+  print(weather);
 }
