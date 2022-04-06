@@ -10,16 +10,27 @@ class Weather {
       required this.maxTemp,
       required this.temp});
 
-  factory Weather.fromJson(Map<String?, Object?> data) {
-    final List weatherDataLst = data['consolidated_weather'] as List;
-    final Map todayWeatherDataLst = weatherDataLst[0];
+  factory Weather.fromJson(Map<String?, Object?> weatherJsonRootMap) {
+    // weatherJsonRootMap = http.get(url).body
+    final List weatherDataLst = weatherJsonRootMap['consolidated_weather'] as List;
+    final Map todayWeatherDataMap = weatherDataLst[0];
 
     return Weather(
-        weatherState: todayWeatherDataLst['weather_state_name'],
-        minTemp: todayWeatherDataLst['min_temp'],
-        maxTemp: todayWeatherDataLst['max_temp'],
-        temp: todayWeatherDataLst['the_temp']);
+        weatherState: todayWeatherDataMap['weather_state_name'],
+        minTemp: todayWeatherDataMap['min_temp'],
+        maxTemp: todayWeatherDataMap['max_temp'],
+        temp: todayWeatherDataMap['the_temp']);
   }
+
+  Weather.fromJsonNoFactory(Map todayWeatherDataMap)
+      // works, but has the disadvantage that     
+      //  final List weatherDataLst = data['consolidated_weather'] as List; and
+      //  final Map todayWeatherDataMap = weatherDataLst[0]; must be moved to
+      //  constructor caller, which is bad !
+      : weatherState = todayWeatherDataMap['weather_state_name'],
+        minTemp = todayWeatherDataMap['min_temp'],
+        maxTemp = todayWeatherDataMap['max_temp'],
+        temp = todayWeatherDataMap['the_temp'];
 
   @override
   String toString() {

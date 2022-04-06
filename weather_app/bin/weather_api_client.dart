@@ -4,6 +4,14 @@ import 'package:http/http.dart' as http;
 
 import 'weather.dart';
 
+class WeatherException implements Exception { // extends not possible !!!
+  final String _message;
+
+  WeatherException(String message) : _message = message;
+
+  String get message => _message;
+}
+
 class WeatherApiClient {
   static const String baseUrl = 'https://www.metaweather.com/api';
 
@@ -20,6 +28,10 @@ class WeatherApiClient {
 
     final locationJson = jsonDecode(response.body) as List;
 
+    if (locationJson.isEmpty) {
+      throw WeatherException('City $city not found');
+    }
+
     return locationJson.first['woeid'] as int;
   }
 
@@ -29,18 +41,26 @@ class WeatherApiClient {
     final response = await http.get(url);
 
     if (response.statusCode != 200) {
-      throw Exception('Error getting weather for location id $locationId');
+      throw WeatherException(
+          'Error getting weather for location id $locationId');
     }
 
-    final weatherJson = jsonDecode(response.body);
+    final weatherJsonRootMap = jsonDecode(response.body);
     //print(response.body);
-    final weather = Weather.fromJson(weatherJson);
+    final weather = Weather.fromJson(weatherJsonRootMap);
+
+    final List weatherDataLst =
+        weatherJsonRootMap['consolidated_weather'] as List;
+    final Map todayWeatherDataMap = weatherDataLst[0];
+    final weather2 = Weather.fromJsonNoFactory(todayWeatherDataMap);
 
     return weather;
+//    return weather2;
   }
 
   Future<Weather> getWeather(String city) async {
     final int locationId = await getLocationId(city);
+    
     return await fetchWeather(locationId);
   }
 }
