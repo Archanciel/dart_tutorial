@@ -67,11 +67,15 @@ mixin MixinClassDateTime on MySubClass {
 }
 
 extension on MySubSubClass {
+  // When you use your extension in another file,
+  // you must give it a name !
   String describeUpperCase() {
     return describe().toUpperCase();
   }
 
-  double hourPerDay = 8;
+  // double hourPerDay = 8; // Extension can't declare instance fields. Try
+  //                           removing the field declaration or making it a
+  //                           static declaration
 }
 
 void main() {
