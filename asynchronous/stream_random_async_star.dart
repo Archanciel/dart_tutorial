@@ -19,10 +19,16 @@ void main() {
   print('stream of delays created');
 
   int i = 1;
+  bool first = true;
 
   streamSecDelays.listen((event) {
-    print('${i++}: printed after $event seconds');
+    if (first) {
+      print('${i++}: printed after $event seconds');
+      first = false;
+    } else {
+      print('${i++}: printed after next $event seconds');
+    }
   });
 
-  print('nain end printed before obtaining streamed delays');
+  print('main end printed before obtaining streamed delays');
 }

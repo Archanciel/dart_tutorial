@@ -87,7 +87,7 @@ void main() {
     ...?intLstTwoNull, // ...intLstTwoNull causes compile error 'A nullable
     //                    expression can't be used in a spread'
     ...intLstThree,
-    ...?intLstFourNull,
+//    ...?intLstFourNull, // The element type 'int?' can't be assigned to the list type 'int'.
   ];
   print('intLstFour $intLstFour'); // intLstFour [10, 20, 230, 40, 1, 2, 23, 4]
 }
