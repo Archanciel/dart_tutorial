@@ -1,5 +1,5 @@
-String createOrderMessage() {
-  var order = fetchUserOrder();
+Future<String> createOrderMessage() async {
+  String order = await fetchUserOrder();
   return 'Your order is: $order';
 }
 
@@ -11,7 +11,7 @@ Future<String> fetchUserOrder() =>
       () => 'Large Latte',
     );
 
-void main() {
+Future<void> main() async {
   print('Fetching user order...');
-  print(createOrderMessage());
+  print(await createOrderMessage());
 }
