@@ -1,4 +1,5 @@
 Future<void> printOrderMessage() async {
+  print('Awaiting user order for 4 seconds. During that, the app prints time every second ! ...');
   var order = await fetchUserOrder();
   print('Awaited user order for 4 seconds ...');
   print('Your order is: $order');
